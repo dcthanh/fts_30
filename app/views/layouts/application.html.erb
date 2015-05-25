@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BaseApp</title>
+  <title><%= yield(:title) %> | FTS30</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag "logo.jpg" %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header><%= render 'layouts/header' %></header>
+    <main role="main">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </main>
+  <footer><%= render 'layouts/footer' %></footer>
 </body>
 </html>
