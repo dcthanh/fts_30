@@ -11,7 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526015576) do
+ActiveRecord::Schema.define(version: 20150526064515) do
+
+  create_table "exams", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "time",       limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "subject_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "exams", ["subject_id"], name: "index_exams_on_subject_id", using: :btree
+  add_index "exams", ["user_id"], name: "index_exams_on_user_id", using: :btree
+
+  create_table "options", force: :cascade do |t|
+    t.string   "content",     limit: 255
+    t.boolean  "correct",     limit: 1
+    t.integer  "question_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "exam_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "questions", ["exam_id"], name: "index_questions_on_exam_id", using: :btree
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.integer  "exam_id",     limit: 4
+    t.integer  "option_id",   limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "results", ["exam_id"], name: "index_results_on_exam_id", using: :btree
+  add_index "results", ["option_id"], name: "index_results_on_option_id", using: :btree
+  add_index "results", ["question_id"], name: "index_results_on_question_id", using: :btree
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -32,4 +81,11 @@ ActiveRecord::Schema.define(version: 20150526015576) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "exams", "subjects"
+  add_foreign_key "exams", "users"
+  add_foreign_key "options", "questions"
+  add_foreign_key "questions", "exams"
+  add_foreign_key "results", "exams"
+  add_foreign_key "results", "options"
+  add_foreign_key "results", "questions"
 end
