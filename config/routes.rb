@@ -5,6 +5,14 @@ Rails.application.routes.draw do
   get "help"    => "static_pages#help"
   get "about"   => "static_pages#about"
   get "contact" => "static_pages#contact"
+
+  namespace :admin do
+    root "static_pages#home"
+    resources :subjects
+  end  
+
+  devise_for :users
+  resources :users, only: [:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
