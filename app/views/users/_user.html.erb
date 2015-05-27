@@ -3,6 +3,9 @@
     <td>
       <div class="col-md-12">
         <%= link_to user.name, user_path(user) %>
+        <span>
+          <%= user.normal? ? "Normal user" : "Admin user " %>
+        </span>
       </div>
     </td>
   </tr>
