@@ -1,0 +1,9 @@
+<% unless current_user == user %>
+  <tr id="user_<%= user.id %>">
+    <td>
+      <div class="col-md-12">
+        <%= link_to user.name, user_path(user) %>
+      </div>
+    </td>
+  </tr>
+<% end %>
