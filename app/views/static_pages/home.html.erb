@@ -1,4 +1,15 @@
 <% provide :title, "Home" %>
-<center>
-  <h2>Home page</h2>
-</center>
+<% unless user_signed_in? %>
+  <center>
+    <div type="button" class="btn btn-default" >
+      <h1>Welcome to Framgia Testing System</h1>
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+        <%= link_to 'Sign up now', new_user_registration_path %>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+      </button>
+    </div>
+  </center>
+<% else %>
+  <h2>This is home page</h2>
+<% end %>
