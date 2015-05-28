@@ -22,6 +22,7 @@
 en:
   hello: "Hello world"
   success_flash: "Successfully!"
+  failed_flash: "Failed!"
   u_delete: "User deleted."
   u_update: "User updated."
   u_error_update: "Unable to update user."

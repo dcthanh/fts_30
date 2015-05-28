@@ -1,1 +1,5 @@
-<%= @subject.name %>
+<h3><%= @subject.name %></h3>
+<h3> All exams </h3>
+<% @exams.each do |exam| %>
+  <li><%= link_to exam.name, admin_exam_path(exam) %></li>
+<% end %>

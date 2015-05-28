@@ -6,6 +6,7 @@ class Admin::SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find params[:id]
+    @exams = @subject.exams
   end
 
   def new
