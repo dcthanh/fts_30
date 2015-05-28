@@ -1,0 +1,12 @@
+<h3> Exam's name </h3>
+<%= @exam.name %>
+<h3> Questions of exam </h3>
+<% @questions.each do |question| %>
+  <li>
+    <%= question.content %>
+    <h4> Options </h4>
+    <% question.options.each do |option| %>
+      <ol><%= option.content %></ol>
+    <% end %>
+  </li>
+<% end %>
