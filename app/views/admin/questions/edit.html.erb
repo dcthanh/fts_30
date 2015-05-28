@@ -1,0 +1,9 @@
+<% provide :title, 'Edit question' %>
+
+<div class="row">
+  <%= form_for [:admin, @question] do |f| %>
+    <%= render 'question_fields', f: f %>
+
+    <%= f.submit "Submit", class: "btn btn-primary admin-submit" %>
+  <% end %>
+</div>

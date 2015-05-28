@@ -1,0 +1,7 @@
+<%= f.text_field :content, class: "form-control" %>
+<%= f.label 'Đúng?' %>
+<%= f.check_box :correct %>
+<div class="remove-option">
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove Option" %>
+</div>

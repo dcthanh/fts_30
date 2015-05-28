@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root "static_pages#home"
     resources :subjects
     resources :exams, only: [:show, :destroy]
+    resources :questions
   end  
 
   devise_for :users
