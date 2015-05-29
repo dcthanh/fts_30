@@ -3,6 +3,7 @@ class CreateExams < ActiveRecord::Migration
     create_table :exams do |t|
       t.string :name
       t.integer :time
+      t.integer :lesson_id
       t.references :user, index: true, foreign_key: true
       t.references :subject, index: true, foreign_key: true
 
